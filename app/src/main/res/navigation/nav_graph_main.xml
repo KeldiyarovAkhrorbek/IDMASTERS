@@ -94,6 +94,27 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_showAboutAppFragment"
+            app:destination="@id/showAboutAppFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_conditionsFragment"
+            app:destination="@id/conditionsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_privacyFragment2"
+            app:destination="@id/privacyFragment2"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -210,4 +231,19 @@
         android:name="com.masters.idmasters.fragments.videos.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/showAboutAppFragment"
+        android:name="com.masters.idmasters.fragments.main.extra.ShowAboutAppFragment"
+        android:label="ShowAboutAppFragment"
+        tools:layout="@layout/fragment_show_about_app" />
+    <fragment
+        android:id="@+id/conditionsFragment"
+        android:name="com.masters.idmasters.fragments.main.extra.ConditionsFragment"
+        android:label="fragment_privacy"
+        tools:layout="@layout/fragment_privacy" />
+    <fragment
+        android:id="@+id/privacyFragment2"
+        android:name="com.masters.idmasters.fragments.main.extra.PrivacyFragment"
+        android:label="PrivacyFragment"
+        tools:layout="@layout/fragment_privacy" />
 </navigation>

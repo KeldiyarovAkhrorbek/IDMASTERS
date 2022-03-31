@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
+import com.masters.idmasters.activities.MainActivity
 import com.masters.idmasters.adapters.VideoAdapter
 import com.masters.idmasters.databinding.FragmentVideoBinding
 import com.masters.idmasters.models.Video
@@ -50,6 +51,16 @@ class VideoFragment : Fragment() {
     private fun gotoUrl(url: String) {
         val parse = Uri.parse(url)
         startActivity(Intent(Intent.ACTION_VIEW, parse))
+    }
+
+    override fun onResume() {
+        (activity as MainActivity).hideBottom()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        (activity as MainActivity).showBottom()
+        super.onPause()
     }
 
 

@@ -63,6 +63,28 @@ class SettingsFragment : Fragment() {
         binding.layoutAdmin.layoutAddVideo.setOnClickListener {
             findNavController().navigate(R.id.action_nav_settings_to_addVideoFragment)
         }
+        binding.layoutAdmin.layoutAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_showAboutAppFragment)
+        }
+        binding.layoutUser.layoutAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_showAboutAppFragment)
+        }
+
+        binding.layoutAdmin.layoutConditions.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_conditionsFragment)
+        }
+        binding.layoutUser.layoutConditions.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_conditionsFragment)
+        }
+
+        binding.layoutAdmin.layoutPrivacy.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_privacyFragment2)
+        }
+        binding.layoutUser.layoutPrivacy.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_privacyFragment2)
+        }
+
+
         return binding.root
     }
 
