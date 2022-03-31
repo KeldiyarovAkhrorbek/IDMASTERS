@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.masters.idmasters.fragments.fourmain.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_newsFragment"
+            app:destination="@id/newsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_specialistFragment"
+            app:destination="@id/specialistFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_star"
+        android:name="com.masters.idmasters.fragments.fourmain.CompetitionFragment"
+        android:label="fragment_starred"
+        tools:layout="@layout/fragment_competition">
+        <action
+            android:id="@+id/action_nav_star_to_showCompetitionFragment"
+            app:destination="@id/showCompetitionFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.masters.idmasters.fragments.fourmain.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.masters.idmasters.fragments.fourmain.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_changeLanguageFragment"
+            app:destination="@id/changeLanguageFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_addCompetitionFragment"
+            app:destination="@id/addCompetitionFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_addNewsFragment"
+            app:destination="@id/addNewsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_addSphereFragment"
+            app:destination="@id/addSphereFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.masters.idmasters.fragments.main.news.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_showNewsFragment"
+            app:destination="@id/showNewsFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:popUpToInclusive="true"
+            app:popUpToSaveState="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/specialistFragment"
+        android:name="com.masters.idmasters.fragments.main.specialist.SpecialistFragment"
+        android:label="fragment_specialist"
+        tools:layout="@layout/fragment_specialist">
+        <action
+            android:id="@+id/action_specialistFragment_to_uploadResumeFragment"
+            app:destination="@id/uploadResumeFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_specialistFragment_to_showSpecialistInfoFragment"
+            app:destination="@id/showSpecialistInfoFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/vacancyFragment"
+        android:name="com.masters.idmasters.fragments.main.vacancy.VacancyFragment"
+        android:label="fragment_vacancy"
+        tools:layout="@layout/fragment_vacancy">
+        <action
+            android:id="@+id/action_vacancyFragment_to_uploadVacancyFragment"
+            app:destination="@id/uploadVacancyFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_vacancyFragment_to_showVacancyInfoFragment"
+            app:destination="@id/showVacancyInfoFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadVacancyFragment"
+        android:name="com.masters.idmasters.fragments.main.vacancy.UploadVacancyFragment"
+        android:label="fragment_upload_vacancy"
+        tools:layout="@layout/fragment_upload_vacancy" />
+    <fragment
+        android:id="@+id/uploadResumeFragment"
+        android:name="com.masters.idmasters.fragments.main.specialist.UploadResumeFragment"
+        android:label="fragment_upload_resume"
+        tools:layout="@layout/fragment_upload_resume" />
+    <fragment
+        android:id="@+id/changeLanguageFragment"
+        android:name="com.masters.idmasters.fragments.main.changelanguage.ChangeLanguageFragment"
+        android:label="fragment_change_language"
+        tools:layout="@layout/fragment_change_language" />
+    <fragment
+        android:id="@+id/addCompetitionFragment"
+        android:name="com.masters.idmasters.fragments.main.add.AddCompetitionFragment"
+        android:label="AddCompetitionFragment"
+        tools:layout="@layout/fragment_add_competition" />
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="com.masters.idmasters.fragments.main.add.AddNewsFragment"
+        android:label="fragment_add_news"
+        tools:layout="@layout/fragment_add_news" />
+    <fragment
+        android:id="@+id/addSphereFragment"
+        android:name="com.masters.idmasters.fragments.main.add.AddSphereFragment"
+        android:label="fragment_add_sphere"
+        tools:layout="@layout/fragment_add_sphere" />
+    <fragment
+        android:id="@+id/showNewsFragment"
+        android:name="com.masters.idmasters.fragments.main.news.ShowNewsFragment"
+        android:label="fragment_show_news"
+        tools:layout="@layout/fragment_show_news" />
+    <fragment
+        android:id="@+id/showCompetitionFragment"
+        android:name="com.masters.idmasters.fragments.main.competition.ShowCompetitionFragment"
+        android:label="ShowCompetitionFragment"
+        tools:layout="@layout/fragment_show_competition" />
+    <fragment
+        android:id="@+id/showSpecialistInfoFragment"
+        android:name="com.masters.idmasters.fragments.main.specialist.ShowSpecialistInfoFragment"
+        android:label="ShowSpecialistInfoFragment"
+        tools:layout="@layout/fragment_show_specialist_info" />
+    <fragment
+        android:id="@+id/showVacancyInfoFragment"
+        android:name="com.masters.idmasters.fragments.main.vacancy.ShowVacancyInfoFragment"
+        android:label="ShowVacancyInfoFragment"
+        tools:layout="@layout/fragment_show_vacancy_info" />
+</navigation>

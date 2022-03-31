@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "517414857128",
+    "project_id": "itmastersfirebase",
+    "storage_bucket": "itmastersfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517414857128:android:a9cb18823f48651010559d",
+        "android_client_info": {
+          "package_name": "com.masters.idmasters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517414857128-kb9hbatg4s8gi8lgb7vd1r9sjtcr5oms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKZOWoDgSE2JE0N0OuSCLWty7HPlzJz8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517414857128-kb9hbatg4s8gi8lgb7vd1r9sjtcr5oms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

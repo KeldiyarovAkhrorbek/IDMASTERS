@@ -1,0 +1,497 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_screen">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#E5E5E5"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@id/increase_chance_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_resume_tv"
+                app:rippleColor="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:src="@drawable/ic_back" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/create_resume_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/upload_resumes"
+                android:textColor="#09101D"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintLeft_toRightOf="@id/iv_back"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/increase_chance_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/find_specialists_for_your_team"
+                android:textColor="#09101D"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintLeft_toRightOf="@id/iv_back"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_resume_tv" />
+
+            <com.skydoves.progressview.ProgressView
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_13sdp"
+                app:layout_constraintTop_toBottomOf="@id/increase_chance_tv"
+                app:progressView_autoAnimate="true"
+                app:progressView_colorBackground="@color/white"
+                app:progressView_colorProgress="@color/main_color"
+                app:progressView_labelColorInner="@color/white"
+                app:progressView_labelColorOuter="@color/main_color"
+                app:progressView_labelSize="@dimen/_11ssp"
+                app:progressView_labelText="@string/how_complete_is_your_vacancy"
+                app:progressView_labelTypeface="bold"
+                app:progressView_max="100"
+                app:progressView_min="0"
+                app:progressView_progress="16"
+                app:progressView_progressFromPrevious="true"
+                app:progressView_radius="@dimen/_20sdp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_100sdp"
+                app:layout_constraintTop_toBottomOf="@id/progress">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_upload_picture"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_upload_resume"
+                    app:layout_constraintBottom_toBottomOf="@id/radio2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radio2">
+
+                    <EditText
+                        android:id="@+id/ed_company_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/company_name"
+                        android:singleLine="true"
+                        android:textSize="@dimen/_12ssp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_company_name">
+
+                    <EditText
+                        android:id="@+id/ed_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/location"
+                        android:singleLine="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_requirements"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_location">
+
+                    <EditText
+                        android:id="@+id/ed_requirements"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/requirements"
+                        android:singleLine="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_requirements">
+
+                    <EditText
+                        android:id="@+id/ed_offers"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/offers"
+                        android:singleLine="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_rules"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_offers">
+
+                    <EditText
+                        android:id="@+id/ed_rules"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/rules"
+                        android:singleLine="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_contact_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_rules">
+
+                    <EditText
+                        android:id="@+id/ed_contact_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/contact_number"
+                        android:inputType="phone"
+                        android:singleLine="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_company_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_contact_number">
+
+                    <EditText
+                        android:id="@+id/ed_company_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/company_email"
+                        android:singleLine="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_salary"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_company_email">
+
+                    <EditText
+                        android:id="@+id/ed_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/salary" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_telegram"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_salary">
+
+                    <EditText
+                        android:id="@+id/ed_telegram"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/telegram_username" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_speciality"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    app:cardBackgroundColor="#EFEFEF"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_telegram">
+
+                    <Spinner
+                        android:id="@+id/spinner_speciality"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:buttonTint="@color/main_color"
+                    android:checked="false"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/yes"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_speciality" />
+
+                <TextView
+                    android:id="@+id/for_students_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/is_for_students"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintBottom_toBottomOf="@id/checkbox"
+                    app:layout_constraintRight_toLeftOf="@id/checkbox"
+                    app:layout_constraintTop_toTopOf="@id/checkbox" />
+
+
+                <LinearLayout
+                    android:id="@+id/extra"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/for_students_tv" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/extra"
+                    app:rippleColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient_login"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_semibold"
+                            android:text="@string/upload"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/experience_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/required_exprience"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintLeft_toRightOf="@id/iv_upload_picture"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toRightOf="@id/iv_upload_picture"
+                    app:layout_constraintStart_toStartOf="@id/experience_tv"
+                    app:layout_constraintTop_toBottomOf="@id/experience_tv">
+
+                    <RadioButton
+                        android:id="@+id/less_than_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:checked="true"
+                        android:text="@string/less_than_1_years"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:id="@+id/one_to_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:text="@string/years_1_2"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:id="@+id/three_to_five"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:text="@string/three_to_five"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:id="@+id/five_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:text="@string/five_plus_years"
+                        android:textSize="@dimen/_10ssp" />
+                </RadioGroup>
+
+
+                <TextView
+                    android:id="@+id/mode_of_work_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/mode_of_work"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="@id/experience_tv"
+                    app:layout_constraintTop_toBottomOf="@id/radio1" />
+
+                <RadioGroup
+                    android:id="@+id/radio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="0dp"
+                    app:layout_constraintStart_toStartOf="@id/mode_of_work_tv"
+                    app:layout_constraintTop_toBottomOf="@id/mode_of_work_tv">
+
+                    <RadioButton
+                        android:id="@+id/part_time_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:checked="true"
+                        android:text="@string/part_time"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:id="@+id/full_time_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:text="@string/full_time"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <RadioButton
+                        android:id="@+id/remote_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_color"
+                        android:text="@string/remote"
+                        android:textSize="@dimen/_10ssp" />
+                </RadioGroup>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

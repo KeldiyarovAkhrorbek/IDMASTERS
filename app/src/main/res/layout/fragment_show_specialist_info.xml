@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/color_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@color/main_color"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/resume_image"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/person_placeholer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_resume_fio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_semibold"
+            android:text="Palonchiyev Pistoncha"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resume_image" />
+
+        <TextView
+            android:id="@+id/tv_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Paloncha developer"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_17ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_resume_fio" />
+
+
+        <TextView
+            android:id="@+id/tv_general_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/roboto_semibold"
+            android:text="@string/general_information"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_job" />
+
+        <ImageView
+            android:id="@+id/iv_date"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/ic_cv_date"
+            app:layout_constraintStart_toStartOf="@id/tv_general_information"
+            app:layout_constraintTop_toBottomOf="@id/tv_general_information" />
+
+        <TextView
+            android:id="@+id/tv_birth_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="15/15/2015"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_date"
+            app:layout_constraintStart_toEndOf="@id/iv_date"
+            app:layout_constraintTop_toTopOf="@id/iv_date" />
+
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/ic_cv_location"
+            app:layout_constraintStart_toStartOf="@id/iv_date"
+            app:layout_constraintTop_toBottomOf="@id/iv_date" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Asgard"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_location"
+            app:layout_constraintStart_toEndOf="@id/iv_location"
+            app:layout_constraintTop_toTopOf="@id/iv_location" />
+
+
+        <ImageView
+            android:id="@+id/iv_phone_number"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/ic_cv_phone"
+            app:layout_constraintStart_toStartOf="@id/iv_location"
+            app:layout_constraintTop_toBottomOf="@id/iv_location" />
+
+        <TextView
+            android:id="@+id/tv_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:autoLink="phone"
+            android:fontFamily="@font/roboto_regular"
+            android:text="+998 91 555 55 55"
+            android:textColor="@color/black"
+            android:textColorLink="@color/main_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_phone_number"
+            app:layout_constraintStart_toEndOf="@id/iv_phone_number"
+            app:layout_constraintTop_toTopOf="@id/iv_phone_number" />
+
+
+        <ImageView
+            android:id="@+id/iv_telegram"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/ic_cv_telegram"
+            app:layout_constraintStart_toStartOf="@id/iv_phone_number"
+            app:layout_constraintTop_toBottomOf="@id/iv_phone_number" />
+
+        <TextView
+            android:id="@+id/tv_telegram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="\@pistoncha"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_telegram"
+            app:layout_constraintStart_toEndOf="@id/iv_telegram"
+            app:layout_constraintTop_toTopOf="@id/iv_telegram" />
+
+
+        <ImageView
+            android:id="@+id/iv_email"
+            android:layout_width="@dimen/_21sdp"
+            android:layout_height="@dimen/_21sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/ic_sv_email"
+            app:layout_constraintStart_toStartOf="@id/iv_telegram"
+            app:layout_constraintTop_toBottomOf="@id/iv_telegram" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:autoLink="email"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:fontFamily="@font/roboto_regular"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="dasdadsadsadadsadsadsadsadsadasddasdasdasdsadasdasdadsdasd"
+            android:textColor="@color/black"
+            android:textColorLink="@color/main_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_email"
+            app:layout_constraintLeft_toRightOf="@id/iv_email"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_email" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/study_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/iv_email">
+
+            <TextView
+                android:id="@+id/tv_study"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:fontFamily="@font/roboto_semibold"
+                android:text="@string/about_study"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/_19ssp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_university"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Inha University in Tashkent"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="@id/tv_study"
+                app:layout_constraintTop_toBottomOf="@id/tv_study" />
+
+
+            <TextView
+                android:id="@+id/tv_major"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Computer science"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="@id/tv_university"
+                app:layout_constraintTop_toBottomOf="@id/tv_university" />
+
+            <TextView
+                android:id="@+id/tv_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Junior"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="@id/tv_major"
+                app:layout_constraintTop_toBottomOf="@id/tv_major" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_skills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/roboto_semibold"
+            android:text="@string/skills_original1"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/study_layout" />
+
+
+        <TextView
+            android:id="@+id/tv_skills_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Jamoada ishlash\nVaqtni boshqarish\nHTML/CSS\nBootstrap\nJava"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintStart_toStartOf="@id/tv_skills"
+            app:layout_constraintTop_toBottomOf="@id/tv_skills" />
+
+
+        <TextView
+            android:id="@+id/tv_experience_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/roboto_semibold"
+            android:text="@string/experience_full"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_skills_full" />
+
+
+        <TextView
+            android:id="@+id/tv_experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="1 yil"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintStart_toStartOf="@id/tv_experience_tv"
+            app:layout_constraintTop_toBottomOf="@id/tv_experience_tv" />
+
+        <TextView
+            android:id="@+id/mode_of_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/roboto_semibold"
+            android:text="@string/mode_of_work"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_experience" />
+
+
+        <TextView
+            android:id="@+id/tv_mode_of_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/full_time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintStart_toStartOf="@id/mode_of_work"
+            app:layout_constraintTop_toBottomOf="@id/mode_of_work" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mode_of_work" />
+
+        <ImageButton
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

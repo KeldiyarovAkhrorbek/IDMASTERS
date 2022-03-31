@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/screenIntroduce">
+
+    <fragment
+        android:id="@+id/screenIntroduce"
+        android:name="com.masters.idmasters.fragments.register.ScreenIntroduce"
+        android:label="ScreenIntroduce"
+        tools:layout="@layout/layout_introduce">
+        <action
+            android:id="@+id/action_screenIntroduce_to_screenRegistration"
+            app:destination="@id/screenRegistration"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenRegistration"
+        android:name="com.masters.idmasters.fragments.register.ScreenRegistration"
+        android:label="ScreenRegistration"
+        tools:layout="@layout/layout_registration" />
+</navigation>

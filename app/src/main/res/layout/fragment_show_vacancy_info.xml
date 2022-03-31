@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_screen">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#E5E5E5"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/white">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_7sdp"
+                android:src="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_job_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/job_details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_17ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintLeft_toRightOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_company"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:src="@drawable/placeholder"
+            app:layout_constraintLeft_toLeftOf="@id/iv_back"
+            app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+        <TextView
+            android:id="@+id/tv_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Back-end dasturchi"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            app:layout_constraintLeft_toRightOf="@id/civ_company"
+            app:layout_constraintTop_toTopOf="@id/civ_company" />
+
+        <TextView
+            android:id="@+id/tv_company_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Asgard bank"
+            android:textColor="#717171"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@id/civ_company"
+            app:layout_constraintLeft_toRightOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/tv_job" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/civ_company" />
+
+        <TextView
+            android:id="@+id/requirements_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/requirements_original"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <LinearLayout
+            android:id="@+id/layout_requirements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/requirements_tv" />
+
+
+        <TextView
+            android:id="@+id/rules_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/rules_original"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/layout_requirements" />
+
+        <LinearLayout
+            android:id="@+id/layout_rules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/rules_tv" />
+
+        <TextView
+            android:id="@+id/offers_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/offers_original"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/layout_rules" />
+
+        <LinearLayout
+            android:id="@+id/layout_offers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/offers_tv" />
+
+        <TextView
+            android:id="@+id/mode_of_work_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/mode_of_work"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/layout_offers" />
+
+
+        <TextView
+            android:id="@+id/tv_mode_of_work_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Full time"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_offers" />
+
+
+        <TextView
+            android:id="@+id/salary_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/salary"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/mode_of_work_tv" />
+
+
+        <TextView
+            android:id="@+id/tv_salary_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="$1000"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mode_of_work_tv" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/salary_tv" />
+
+        <TextView
+            android:id="@+id/for_all_questions_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/for_all_questions"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/line2" />
+
+
+        <ImageView
+            android:id="@+id/iv_phone_number"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/ic_cv_phone"
+            app:layout_constraintStart_toStartOf="@id/for_all_questions_tv"
+            app:layout_constraintTop_toBottomOf="@id/for_all_questions_tv" />
+
+        <TextView
+            android:id="@+id/tv_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:autoLink="phone"
+            android:fontFamily="@font/roboto_regular"
+            android:text="+998335565644"
+            android:textColor="@color/black"
+            android:textColorLink="@color/main_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_phone_number"
+            app:layout_constraintStart_toEndOf="@id/iv_phone_number"
+            app:layout_constraintTop_toTopOf="@id/iv_phone_number" />
+
+
+        <ImageView
+            android:id="@+id/iv_telegram"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/ic_cv_telegram"
+            app:layout_constraintStart_toStartOf="@id/iv_phone_number"
+            app:layout_constraintTop_toBottomOf="@id/iv_phone_number" />
+
+        <TextView
+            android:id="@+id/tv_telegram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:autoLink="all"
+            android:fontFamily="@font/roboto_regular"
+            android:text="dasdas"
+            android:textColor="@color/black"
+            android:textColorLink="@color/main_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_telegram"
+            app:layout_constraintStart_toEndOf="@id/iv_telegram"
+            app:layout_constraintTop_toTopOf="@id/iv_telegram" />
+
+
+        <TextView
+            android:id="@+id/to_send_resume_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/to_send_resume"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/civ_company"
+            app:layout_constraintTop_toBottomOf="@id/tv_telegram" />
+
+        <ImageView
+            android:id="@+id/iv_email"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/ic_sv_email"
+            app:layout_constraintStart_toStartOf="@id/to_send_resume_tv"
+            app:layout_constraintTop_toBottomOf="@id/to_send_resume_tv" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:autoLink="all"
+            android:fontFamily="@font/roboto_regular"
+            android:text="dasdas"
+            android:textColor="@color/black"
+            android:textColorLink="@color/main_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_email"
+            app:layout_constraintStart_toEndOf="@id/iv_email"
+            app:layout_constraintTop_toTopOf="@id/iv_email" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
