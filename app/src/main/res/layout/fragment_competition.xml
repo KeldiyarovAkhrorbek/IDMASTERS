@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_15sdp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Konkurslar haqida ma'lumot"
+            android:text="@string/news_about_competition"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -123,4 +123,8 @@
     <string name="to_send_resume">Rezyumeni yuborish uchun</string>
     <string name="how_complete_is_your_vacancy">Vakansiyangiz qanchalik to\'la</string>
     <string name="skills_original1">Ko\'nikmalar</string>
+    <string name="news_about_competition">Konkurslar haqida ma\'lumot</string>
+    <string name="uzbek">O\'zbekcha</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
 </resources>

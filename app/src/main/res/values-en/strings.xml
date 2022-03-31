@@ -123,4 +123,8 @@
     <string name="to_send_resume">To send resume</string>
     <string name="how_complete_is_your_vacancy">How complete is your vacancy</string>
     <string name="skills_original1">Skills</string>
+    <string name="news_about_competition">Information about the competitions</string>
+    <string name="uzbek">O\'zbekcha</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
 </resources>

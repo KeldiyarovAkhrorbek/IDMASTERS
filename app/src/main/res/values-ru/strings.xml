@@ -22,7 +22,7 @@
     <string name="experience">Опыт: %1$s</string>
     <string name="create_resume">Создать резюме</string>
     <string name="Increase_your_chances_of_getting_a_job">Улучшить шансы получения работы</string>
-    <string name="how_complete_is_your_resume">Полноценность резюме:</string>
+    <string name="how_complete_is_your_resume">Полноценность резюме</string>
     <string name="client_id">15078193685-8abluekjln3bupg6m16k9jrd8ejc6862.apps.googleusercontent.com</string>
     <string name="input_name_surname">Введите имя и фамилию</string>
     <string name="input_country">Введите страну</string>
@@ -94,7 +94,7 @@
     <string name="find_specialists_for_your_team">Найдите специалистов для своей команды</string>
     <string name="company_name">Название компании</string>
     <string name="location">Расположение</string>
-    <string name="requirements">Студенты(выделить с запятым)</string>
+    <string name="requirements">Требования(выделить с запятым)</string>
     <string name="offers">Предложения(выделить с запятым)</string>
     <string name="rules">Политика(выделить с запятым)</string>
     <string name="contact_number">Номер телефона</string>
@@ -116,11 +116,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="general_information">Общее сведение</string>
     <string name="job_details">Детали работы</string>
-    <string name="requirements_original">Студенты</string>
+    <string name="requirements_original">Требования</string>
     <string name="rules_original">Правила</string>
     <string name="offers_original">Предложения</string>
     <string name="for_all_questions">Для вопросов</string>
     <string name="to_send_resume">Отправить резюме</string>
     <string name="how_complete_is_your_vacancy">Наполненность вакансии</string>
     <string name="skills_original1">Навыки</string>
+    <string name="news_about_competition">Информация о соревнованиях</string>
+    <string name="uzbek">O\'zbekcha</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
 </resources>

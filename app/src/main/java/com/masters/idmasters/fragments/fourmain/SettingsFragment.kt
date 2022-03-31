@@ -45,6 +45,13 @@ class SettingsFragment : Fragment() {
             startActivity(intent)
             (activity as MainActivity).finish()
         }
+        binding.layoutAdmin.layoutLanguage.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_changeLanguageFragment)
+        }
+
+        binding.layoutUser.layoutLanguage.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_changeLanguageFragment)
+        }
 
         binding.layoutUser.layoutExit.setOnClickListener {
             preference.setString("reg", "no")
