@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/screenIntroduce"
-        android:name="com.masters.idmasters.fragments.register.ScreenIntroduce"
+        android:name="com.asilmedia.idmasters.fragments.register.ScreenIntroduce"
         android:label="ScreenIntroduce"
         tools:layout="@layout/layout_introduce">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/screenRegistration"
-        android:name="com.masters.idmasters.fragments.register.ScreenRegistration"
+        android:name="com.asilmedia.idmasters.fragments.register.ScreenRegistration"
         android:label="ScreenRegistration"
         tools:layout="@layout/layout_registration" />
 </navigation>

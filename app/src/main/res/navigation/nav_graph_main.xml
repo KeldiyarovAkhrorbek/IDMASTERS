@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.masters.idmasters.fragments.fourmain.MainFragment"
+        android:name="com.asilmedia.idmasters.fragments.fourmain.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_star"
-        android:name="com.masters.idmasters.fragments.fourmain.CompetitionFragment"
+        android:name="com.asilmedia.idmasters.fragments.fourmain.CompetitionFragment"
         android:label="fragment_starred"
         tools:layout="@layout/fragment_competition">
         <action
@@ -51,12 +51,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.masters.idmasters.fragments.fourmain.ProfileFragment"
+        android:name="com.asilmedia.idmasters.fragments.fourmain.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.masters.idmasters.fragments.fourmain.SettingsFragment"
+        android:name="com.asilmedia.idmasters.fragments.fourmain.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings">
         <action
@@ -118,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.masters.idmasters.fragments.main.news.NewsFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.news.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news">
         <action
@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/specialistFragment"
-        android:name="com.masters.idmasters.fragments.main.specialist.SpecialistFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.specialist.SpecialistFragment"
         android:label="fragment_specialist"
         tools:layout="@layout/fragment_specialist">
         <action
@@ -153,7 +153,7 @@
     </fragment>
     <fragment
         android:id="@+id/vacancyFragment"
-        android:name="com.masters.idmasters.fragments.main.vacancy.VacancyFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.vacancy.VacancyFragment"
         android:label="fragment_vacancy"
         tools:layout="@layout/fragment_vacancy">
         <action
@@ -173,77 +173,77 @@
     </fragment>
     <fragment
         android:id="@+id/uploadVacancyFragment"
-        android:name="com.masters.idmasters.fragments.main.vacancy.UploadVacancyFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.vacancy.UploadVacancyFragment"
         android:label="fragment_upload_vacancy"
         tools:layout="@layout/fragment_upload_vacancy" />
     <fragment
         android:id="@+id/uploadResumeFragment"
-        android:name="com.masters.idmasters.fragments.main.specialist.UploadResumeFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.specialist.UploadResumeFragment"
         android:label="fragment_upload_resume"
         tools:layout="@layout/fragment_upload_resume" />
     <fragment
         android:id="@+id/changeLanguageFragment"
-        android:name="com.masters.idmasters.fragments.main.changelanguage.ChangeLanguageFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.changelanguage.ChangeLanguageFragment"
         android:label="fragment_change_language"
         tools:layout="@layout/fragment_change_language" />
     <fragment
         android:id="@+id/addCompetitionFragment"
-        android:name="com.masters.idmasters.fragments.main.add.AddCompetitionFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.add.AddCompetitionFragment"
         android:label="AddCompetitionFragment"
         tools:layout="@layout/fragment_add_competition" />
     <fragment
         android:id="@+id/addNewsFragment"
-        android:name="com.masters.idmasters.fragments.main.add.AddNewsFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.add.AddNewsFragment"
         android:label="fragment_add_news"
         tools:layout="@layout/fragment_add_news" />
     <fragment
         android:id="@+id/addSphereFragment"
-        android:name="com.masters.idmasters.fragments.main.add.AddSphereFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.add.AddSphereFragment"
         android:label="fragment_add_sphere"
         tools:layout="@layout/fragment_add_sphere" />
     <fragment
         android:id="@+id/showNewsFragment"
-        android:name="com.masters.idmasters.fragments.main.news.ShowNewsFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.news.ShowNewsFragment"
         android:label="fragment_show_news"
         tools:layout="@layout/fragment_show_news" />
     <fragment
         android:id="@+id/showCompetitionFragment"
-        android:name="com.masters.idmasters.fragments.main.competition.ShowCompetitionFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.competition.ShowCompetitionFragment"
         android:label="ShowCompetitionFragment"
         tools:layout="@layout/fragment_show_competition" />
     <fragment
         android:id="@+id/showSpecialistInfoFragment"
-        android:name="com.masters.idmasters.fragments.main.specialist.ShowSpecialistInfoFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.specialist.ShowSpecialistInfoFragment"
         android:label="ShowSpecialistInfoFragment"
         tools:layout="@layout/fragment_show_specialist_info" />
     <fragment
         android:id="@+id/showVacancyInfoFragment"
-        android:name="com.masters.idmasters.fragments.main.vacancy.ShowVacancyInfoFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.vacancy.ShowVacancyInfoFragment"
         android:label="ShowVacancyInfoFragment"
         tools:layout="@layout/fragment_show_vacancy_info" />
     <fragment
         android:id="@+id/addVideoFragment"
-        android:name="com.masters.idmasters.fragments.main.video.AddVideoFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.video.AddVideoFragment"
         android:label="AddVideoFragment"
         tools:layout="@layout/fragment_add_video" />
     <fragment
         android:id="@+id/videoFragment"
-        android:name="com.masters.idmasters.fragments.videos.VideoFragment"
+        android:name="com.asilmedia.idmasters.fragments.videos.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
     <fragment
         android:id="@+id/showAboutAppFragment"
-        android:name="com.masters.idmasters.fragments.main.extra.ShowAboutAppFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.extra.ShowAboutAppFragment"
         android:label="ShowAboutAppFragment"
         tools:layout="@layout/fragment_show_about_app" />
     <fragment
         android:id="@+id/conditionsFragment"
-        android:name="com.masters.idmasters.fragments.main.extra.ConditionsFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.extra.ConditionsFragment"
         android:label="fragment_privacy"
         tools:layout="@layout/fragment_privacy" />
     <fragment
         android:id="@+id/privacyFragment2"
-        android:name="com.masters.idmasters.fragments.main.extra.PrivacyFragment"
+        android:name="com.asilmedia.idmasters.fragments.main.extra.PrivacyFragment"
         android:label="PrivacyFragment"
         tools:layout="@layout/fragment_privacy" />
 </navigation>
