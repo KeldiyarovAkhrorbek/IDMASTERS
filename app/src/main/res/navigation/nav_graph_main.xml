@@ -31,6 +31,9 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_home_to_videoFragment2"
+            app:destination="@id/videoFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_star"
@@ -80,6 +83,13 @@
         <action
             android:id="@+id/action_nav_settings_to_addSphereFragment"
             app:destination="@id/addSphereFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
+        <action
+            android:id="@+id/action_nav_settings_to_addVideoFragment"
+            app:destination="@id/addVideoFragment"
             app:enterAnim="@anim/enter"
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
@@ -190,4 +200,14 @@
         android:name="com.masters.idmasters.fragments.main.vacancy.ShowVacancyInfoFragment"
         android:label="ShowVacancyInfoFragment"
         tools:layout="@layout/fragment_show_vacancy_info" />
+    <fragment
+        android:id="@+id/addVideoFragment"
+        android:name="com.masters.idmasters.fragments.main.video.AddVideoFragment"
+        android:label="AddVideoFragment"
+        tools:layout="@layout/fragment_add_video" />
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.masters.idmasters.fragments.videos.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
 </navigation>

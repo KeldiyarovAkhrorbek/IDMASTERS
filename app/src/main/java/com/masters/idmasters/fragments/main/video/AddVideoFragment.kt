@@ -42,7 +42,7 @@ class AddVideoFragment : Fragment() {
         initializeVariables()
         binding.mcvPut.setOnClickListener {
             val video =
-                Video("${System.currentTimeMillis()}", binding.edTitle.text.toString(), imgUrl)
+                Video("${System.currentTimeMillis()}", imgUrl, binding.edTitle.text.toString())
             firestore.collection("videos").document(video.id.toString()).set(video)
                 .addOnSuccessListener {
                     Toast.makeText(

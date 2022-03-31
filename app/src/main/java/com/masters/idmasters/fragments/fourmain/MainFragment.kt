@@ -75,6 +75,8 @@ class MainFragment : Fragment() {
                     findNavController().navigate(R.id.action_mainFragment_to_specialistFragment)
                 } else if (menu.key == "vacancies") {
                     findNavController().navigate(R.id.action_mainFragment_to_vacancyFragment)
+                } else {
+                    findNavController().navigate(R.id.action_nav_home_to_videoFragment2)
                 }
             }
         })

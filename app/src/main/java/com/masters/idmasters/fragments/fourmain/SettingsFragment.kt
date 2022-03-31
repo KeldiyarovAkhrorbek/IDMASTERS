@@ -59,6 +59,10 @@ class SettingsFragment : Fragment() {
             startActivity(intent)
             (activity as MainActivity).finish()
         }
+
+        binding.layoutAdmin.layoutAddVideo.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_addVideoFragment)
+        }
         return binding.root
     }
 

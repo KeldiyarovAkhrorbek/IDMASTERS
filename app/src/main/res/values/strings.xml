@@ -128,5 +128,6 @@
     <string name="russian">Ruscha</string>
     <string name="english">English</string>
     <string name="video_courses">Video darslar</string>
+    <string name="add_video">Video qo\'shish</string>
 
 </resources>
