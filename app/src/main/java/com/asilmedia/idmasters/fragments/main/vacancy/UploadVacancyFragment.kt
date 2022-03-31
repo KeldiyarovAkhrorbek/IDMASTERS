@@ -98,7 +98,7 @@ class UploadVacancyFragment : Fragment() {
         val rules = binding.edRules.text.toString().trim()
         val contact_number = binding.edContactNumber.text.toString().trim()
         val company_email = binding.edCompanyEmail.text.toString().trim()
-        val salary = binding.edCompanyEmail.text.toString().trim()
+        val salary = binding.edSalary.text.toString().trim()
         val telegram_username = binding.edTelegram.text.toString().trim()
         val speciality = spheresListString[binding.spinnerSpeciality.selectedItemPosition]
         val experience =
