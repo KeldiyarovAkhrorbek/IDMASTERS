@@ -12,6 +12,9 @@ import com.asilmedia.idmasters.activities.MainActivity
 import com.asilmedia.idmasters.activities.RegisterAndLoginActivity
 import com.asilmedia.idmasters.models.User
 import com.asilmedia.idmasters.preference.MyPreference
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.masters.idmasters.R
@@ -20,8 +23,12 @@ import com.masters.idmasters.databinding.FragmentSettingsBinding
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var auth: FirebaseAuth
+    private val client_id: String =
+        "517414857128-kb9hbatg4s8gi8lgb7vd1r9sjtcr5oms.apps.googleusercontent.com"
+    private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firestore: FirebaseFirestore
     private lateinit var preference: MyPreference
+
     private var user = User()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +37,14 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         initializeVariables()
         getUser()
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(client_id)
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+
+
         binding.layoutAdmin.layoutAddNews.setOnClickListener {
             findNavController().navigate(R.id.action_nav_settings_to_addNewsFragment)
         }
@@ -41,6 +56,7 @@ class SettingsFragment : Fragment() {
         }
         binding.layoutAdmin.layoutExit.setOnClickListener {
             preference.setString("reg", "no")
+            googleSignInClient.signOut()
             val intent = Intent(requireContext(), RegisterAndLoginActivity::class.java)
             startActivity(intent)
             (activity as MainActivity).finish()
@@ -55,6 +71,7 @@ class SettingsFragment : Fragment() {
 
         binding.layoutUser.layoutExit.setOnClickListener {
             preference.setString("reg", "no")
+            googleSignInClient.signOut()
             val intent = Intent(requireContext(), RegisterAndLoginActivity::class.java)
             startActivity(intent)
             (activity as MainActivity).finish()

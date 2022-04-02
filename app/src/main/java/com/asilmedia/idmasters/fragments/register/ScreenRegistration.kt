@@ -13,6 +13,9 @@ import com.asilmedia.idmasters.activities.MainActivity
 import com.asilmedia.idmasters.models.User
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.masters.idmasters.R
@@ -24,7 +27,9 @@ class ScreenRegistration : Fragment() {
     private var user: User = User()
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
-
+    private val client_id: String =
+        "517414857128-kb9hbatg4s8gi8lgb7vd1r9sjtcr5oms.apps.googleusercontent.com"
+    private lateinit var googleSignInClient: GoogleSignInClient
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +39,14 @@ class ScreenRegistration : Fragment() {
         auth = FirebaseAuth.getInstance()
         firebaseFirestore = FirebaseFirestore.getInstance()
         binding.ivBack.setOnClickListener {
+            googleSignInClient.signOut()
             findNavController().popBackStack()
         }
-
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(client_id)
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         binding.mcvRegister.setOnClickListener {
             removeErrors()
             if (isValid()) {
