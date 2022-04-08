@@ -90,8 +90,8 @@ class MainFragment : Fragment() {
             .addOnSuccessListener { result ->
                 val dbUser = result.toObject(User::class.java)
                 Glide.with(requireContext()).load(dbUser?.user_image)
-                    .placeholder(R.drawable.person_placeholer)
-                    .error(R.drawable.person_placeholer).into(binding.profileImage)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder).into(binding.profileImage)
 
             }
     }

@@ -24,7 +24,7 @@ class SpecialistsAdapter(
         fun onBind(resume: Resume) {
             itemSpecialists.apply {
                 Glide.with(itemSpecialists.root).load(resume.imgUrl)
-                    .placeholder(R.drawable.person_placeholer).error(R.drawable.person_placeholer)
+                    .placeholder(R.drawable.placeholder).error(R.drawable.placeholder)
                     .into(ivSpecialist)
                 tvSpecialistName.text = resume.full_name
                 tvSpecialistSkills.text =

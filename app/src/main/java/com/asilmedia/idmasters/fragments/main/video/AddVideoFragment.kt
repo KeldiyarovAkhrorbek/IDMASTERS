@@ -131,8 +131,8 @@ class AddVideoFragment : Fragment() {
                             downloadUrl?.addOnSuccessListener { uri ->
                                 imgUrl = uri.toString()
                                 Glide.with(this).load(imgUrl).centerCrop()
-                                    .placeholder(R.drawable.person_placeholer)
-                                    .error(R.drawable.person_placeholer)
+                                    .placeholder(R.drawable.placeholder)
+                                    .error(R.drawable.placeholder)
                                     .into(binding.mainImage)
                                 binding.progress.visibility = View.GONE
                                 binding.mainLayout.alpha = 1F

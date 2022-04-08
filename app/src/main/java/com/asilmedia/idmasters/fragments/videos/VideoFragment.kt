@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.asilmedia.idmasters.activities.MainActivity
 import com.asilmedia.idmasters.adapters.VideoAdapter
 import com.asilmedia.idmasters.models.Video
@@ -32,7 +33,9 @@ class VideoFragment : Fragment() {
         binding.recycler.adapter = videoAdapter
         firestore = FirebaseFirestore.getInstance()
         getVideos()
-
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         return binding.root
     }
 

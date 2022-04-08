@@ -121,8 +121,8 @@ class ProfileFragment : Fragment() {
     private fun getUser() {
         firestore.collection("users").document(auth.uid.toString()).get().addOnSuccessListener {
             user = it.toObject(User::class.java)!!
-            Glide.with(this).load(user.user_image).error(R.drawable.person_placeholer)
-                .placeholder(R.drawable.person_placeholer).into(binding.civProfile)
+            Glide.with(this).load(user.user_image).error(R.drawable.placeholder)
+                .placeholder(R.drawable.placeholder).into(binding.civProfile)
             binding.apply {
                 tvFullName.text = user.full_name
                 tvEmail.text = user.email
@@ -193,8 +193,8 @@ class ProfileFragment : Fragment() {
                             downloadUrl?.addOnSuccessListener { uri ->
                                 imageUrl = uri.toString()
                                 Glide.with(this).load(imageUrl).centerCrop()
-                                    .placeholder(R.drawable.person_placeholer)
-                                    .error(R.drawable.person_placeholer).into(binding.civProfile)
+                                    .placeholder(R.drawable.placeholder)
+                                    .error(R.drawable.placeholder).into(binding.civProfile)
                                 binding.progress.visibility = View.GONE
                                 binding.nested.alpha = 1F
                             }

@@ -302,8 +302,8 @@ class UploadResumeFragment : Fragment() {
                             downloadUrl?.addOnSuccessListener { uri ->
                                 imageUrl = uri.toString()
                                 Glide.with(this).load(imageUrl).centerCrop()
-                                    .placeholder(R.drawable.person_placeholer)
-                                    .error(R.drawable.person_placeholer)
+                                    .placeholder(R.drawable.placeholder)
+                                    .error(R.drawable.placeholder)
                                     .into(binding.ivUploadPicture)
                                 binding.lottie.visibility = View.GONE
                                 binding.scrollView.alpha = 1F

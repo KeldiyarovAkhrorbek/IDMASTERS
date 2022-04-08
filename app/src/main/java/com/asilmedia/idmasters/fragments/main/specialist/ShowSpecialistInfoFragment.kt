@@ -25,8 +25,8 @@ class ShowSpecialistInfoFragment : Fragment() {
         }
         val bundle = arguments
         val resume = bundle?.getSerializable("specialist") as Resume
-        Glide.with(requireContext()).load(resume.imgUrl).error(R.drawable.person_placeholer)
-            .placeholder(R.drawable.person_placeholer).into(binding.resumeImage)
+        Glide.with(requireContext()).load(resume.imgUrl).error(R.drawable.placeholder)
+            .placeholder(R.drawable.placeholder).into(binding.resumeImage)
         binding.apply {
             tvResumeFio.text = resume.full_name
             tvJob.text = resume.speciality + " ${getString(R.string.programmer)}"
