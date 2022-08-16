@@ -1,6 +1,7 @@
 package com.asilmedia.idmasters.fragments.viewpagernews
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,11 +22,9 @@ class NewestFragment : Fragment() {
     private var listBottom = ArrayList<News>()
     private lateinit var horizontalAdapter: NewsHorizontalAdapter
     private lateinit var verticalAdapter: NewsVerticalAdapter
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentNewestBinding.inflate(inflater, container, false)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         firestore = FirebaseFirestore.getInstance()
         horizontalAdapter =
             NewsHorizontalAdapter(object : NewsHorizontalAdapter.SetOnItemClickListener {
@@ -50,14 +49,29 @@ class NewestFragment : Fragment() {
                     )
                 }
             })
-        getNews()
+    }
+
+    private var isLoaded = false
+    private val TAG = "NewestFragment"
+    
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentNewestBinding.inflate(inflater, container, false)
+//        Log.d(TAG, "onCreateView: loaded: $isLoaded")
         binding.rvHorizontal.adapter = horizontalAdapter
         binding.rvVertical.adapter = verticalAdapter
+        if (!isLoaded)
+            getNews()
+
 
         return binding.root
     }
 
     private fun getNews() {
+//        Log.d(TAG, "getNews: getting news")
+        isLoaded = true
         listTop = ArrayList()
         listBottom = ArrayList()
         firestore.collection("news").get().addOnSuccessListener { result ->

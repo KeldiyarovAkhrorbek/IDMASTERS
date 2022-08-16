@@ -1,6 +1,7 @@
 package com.asilmedia.idmasters.fragments.fourmain
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +18,11 @@ class CompetitionFragment : Fragment() {
     private lateinit var competitionAdapter: CompetitionAdapter
     private lateinit var firestore: FirebaseFirestore
     private var listCompetiton = ArrayList<Competition>()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentCompetitionBinding.inflate(inflater, container, false)
+    private var isLoaded = false
+    private val TAG = "CompetitionFragment"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         firestore = FirebaseFirestore.getInstance()
         competitionAdapter = CompetitionAdapter(object : CompetitionAdapter.SetOnItemClickListener {
             override fun setOnItemClick(competition: Competition) {
@@ -33,19 +34,29 @@ class CompetitionFragment : Fragment() {
                 )
             }
         })
-        getList()
+    }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentCompetitionBinding.inflate(inflater, container, false)
+        if (!isLoaded) {
+            getList()
+        }
         binding.rv.adapter = competitionAdapter
         return binding.root
     }
 
     private fun getList() {
+        isLoaded = true
         listCompetiton = ArrayList()
         firestore.collection("competitions").get().addOnSuccessListener { result ->
             for (queryDocumentSnapshot in result) {
                 val competition = queryDocumentSnapshot.toObject(Competition::class.java)
                 listCompetiton.add(competition)
             }
-//            var reversed = listCompetiton.reversed().toList()
             competitionAdapter.submitList(listCompetiton)
             competitionAdapter.notifyDataSetChanged()
         }

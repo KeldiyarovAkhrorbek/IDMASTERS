@@ -116,6 +116,7 @@ class SpecialistFragment : Fragment() {
                 tab.customView = itemTabBinding.root
                 itemTabBinding.text.text = list[position]
                 if (selectedTabPos == position) {
+                    binding.viewpager.currentItem = selectedTabPos
                     with(itemTabBinding) {
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
                         text.setTextColor(resources.getColor(R.color.white))
@@ -135,9 +136,6 @@ class SpecialistFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
                 with(itemTabBinding) {
-//                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.upload_resume)) {
-////                        findNavController().navigate(R.id.action_specialistFragment_to_uploadResumeFragment)
-//                    } else
                     if (itemTabBinding.text.text.toString() == resources.getString(R.string.specialists)) {
                         selectedTabPos = 0
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
@@ -147,12 +145,11 @@ class SpecialistFragment : Fragment() {
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
                         text.setTextColor(resources.getColor(R.color.white))
                     }
-                    getCanditates(
-                        listSphereWithSelected[selectedSpherePos].sphere?.title.toString(),
-                        selectedTabPos
-                    )
-
                 }
+                getCanditates(
+                    listSphereWithSelected[selectedSpherePos].sphere?.title.toString(),
+                    selectedTabPos
+                )
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -163,7 +160,27 @@ class SpecialistFragment : Fragment() {
                 }
             }
 
-            override fun onTabReselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
+                if (itemTabBinding.text.currentTextColor != resources.getColor(R.color.white)) {
+                    with(itemTabBinding) {
+                        if (itemTabBinding.text.text.toString() == resources.getString(R.string.specialists)) {
+                            selectedTabPos = 0
+                            card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
+                            text.setTextColor(resources.getColor(R.color.white))
+                        } else if (itemTabBinding.text.text.toString() == resources.getString(R.string.students)) {
+                            selectedTabPos = 1
+                            card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
+                            text.setTextColor(resources.getColor(R.color.white))
+                        }
+                    }
+                    getCanditates(
+                        listSphereWithSelected[selectedSpherePos].sphere?.title.toString(),
+                        selectedTabPos
+                    )
+                }
+
+            }
         })
 
         return binding.root

@@ -1,6 +1,7 @@
 package com.asilmedia.idmasters.fragments.main.vacancy
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,12 +72,16 @@ class VacancyFragment : Fragment() {
 
     }
 
+    private val TAG = "VacancyFragment"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentVacancyBinding.inflate(inflater, container, false)
+
+        Log.d(TAG, "onCreateView: tabPos $selectedTabPos")
 
         binding.ivBack.setOnClickListener {
             findNavController().popBackStack()
@@ -114,6 +119,7 @@ class VacancyFragment : Fragment() {
                 tab.customView = itemTabBinding.root
                 itemTabBinding.text.text = list[position]
                 if (position == selectedTabPos) {
+                    binding.viewpager.currentItem = selectedTabPos
                     with(itemTabBinding) {
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
                         text.setTextColor(resources.getColor(R.color.white))
@@ -125,7 +131,6 @@ class VacancyFragment : Fragment() {
                     }
                 }
             }
-
         }.attach()
 
 
@@ -133,9 +138,6 @@ class VacancyFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
                 with(itemTabBinding) {
-//                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.upload_vacancy)) {
-//                        findNavController().navigate(R.id.action_vacancyFragment_to_uploadVacancyFragment)
-//                    } else
                     if (itemTabBinding.text.text.toString() == resources.getString(R.string.for_specialists)) {
                         selectedTabPos = 0
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
@@ -145,12 +147,11 @@ class VacancyFragment : Fragment() {
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
                         text.setTextColor(resources.getColor(R.color.white))
                     }
-                    getVacancies(
-                        listSphereWithSelected[selectedSpherePos].sphere?.title.toString(),
-                        selectedTabPos
-                    )
-
                 }
+                getVacancies(
+                    listSphereWithSelected[selectedSpherePos].sphere?.title.toString(),
+                    selectedTabPos
+                )
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -171,7 +172,6 @@ class VacancyFragment : Fragment() {
         selectedTabPos = 0
         selectedSpherePos = 0
         getSpheres()
-
     }
 
 

@@ -1,6 +1,7 @@
 package com.asilmedia.idmasters.fragments.main.news
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,17 +18,52 @@ import com.masters.idmasters.databinding.ItemTabBinding
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
-    private var mRootView: ViewGroup? = null
-    private var mIsFirstLoad = false
     private lateinit var newsViewPagerAdapter: NewsViewPagerAdapter
-    private var created = false
+    private var isLoaded = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
+    private val TAG = "NewsFragment"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNewsBinding.inflate(inflater, container, false)
+
+        Log.d(TAG, "onCreateView: $isLoaded")
+        if (!isLoaded) {
+            isLoaded = true
+            binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
+                    with(itemTabBinding) {
+                        card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
+                        text.setTextColor(resources.getColor(R.color.white))
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab) {
+                    val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
+                    with(itemTabBinding) {
+                        card.setCardBackgroundColor(resources.getColor(R.color.white))
+                        text.setTextColor(resources.getColor(R.color.tab_color))
+                    }
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab) {}
+            })
+
+        }
+
         newsViewPagerAdapter = NewsViewPagerAdapter(this)
+
+        binding.viewpager.isUserInputEnabled = false
         binding.viewpager.adapter = newsViewPagerAdapter
+
         val list = ArrayList<String>()
         list.add(resources.getString(R.string.the_newest))
         list.add(resources.getString(R.string.statistics))
@@ -51,30 +87,12 @@ class NewsFragment : Fragment() {
             }
         }.attach()
 
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
-                with(itemTabBinding) {
-                    card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
-                    text.setTextColor(resources.getColor(R.color.white))
-                }
-            }
 
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
-                with(itemTabBinding) {
-                    card.setCardBackgroundColor(resources.getColor(R.color.white))
-                    text.setTextColor(resources.getColor(R.color.tab_color))
-                }
-            }
 
-            override fun onTabReselected(tab: TabLayout.Tab) {}
-        })
 
         binding.ivBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.viewpager.isUserInputEnabled = false
         return binding.root
     }
 
