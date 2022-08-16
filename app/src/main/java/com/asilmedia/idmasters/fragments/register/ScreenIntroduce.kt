@@ -29,6 +29,7 @@ import com.masters.idmasters.databinding.LayoutIntroduceBinding
 class ScreenIntroduce : Fragment() {
     private val client_id: String =
         "517414857128-kb9hbatg4s8gi8lgb7vd1r9sjtcr5oms.apps.googleusercontent.com"
+//        "517414857128-hmuss6hdeqjk54e3u5gje1tda9uqcf3m.apps.googleusercontent.com"
     private lateinit var binding: LayoutIntroduceBinding
     private lateinit var myPreference: MyPreference
     private lateinit var firebaseFirestore: FirebaseFirestore
@@ -66,6 +67,7 @@ class ScreenIntroduce : Fragment() {
     }
 
     private fun signIn() {
+        Log.d(TAG, "signIn: signIn")
         val signInIntent = googleSignInClient.signInIntent
 //        startActivityForResult(signInIntent, RC_SIGN_IN)
         resultLauncher.launch(signInIntent)
@@ -78,7 +80,7 @@ class ScreenIntroduce : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                Log.d(ContentValues.TAG, "firebaseAuthWithGoogle:" + account.id)
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 Toast.makeText(requireContext(), "Google sign in failed!", Toast.LENGTH_SHORT)
@@ -100,10 +102,13 @@ class ScreenIntroduce : Fragment() {
                 } catch (e: ApiException) {
                     Log.w(TAG, "Google sign in failed", e)
                 }
+            } else {
+                Log.d(TAG, "${result.resultCode}: ")
             }
         }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
+        Log.d(TAG, "firebaseAuthWithGoogle: fire started")
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->

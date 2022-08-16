@@ -115,7 +115,7 @@
                     android:layout_height="@dimen/_60sdp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_upload_resume"
-                    app:layout_constraintBottom_toBottomOf="@id/radio2"
+                    app:layout_constraintBottom_toBottomOf="@id/scroll2"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,7 +128,7 @@
                     app:cardCornerRadius="@dimen/_10sdp"
                     app:cardUseCompatPadding="true"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio2">
+                    app:layout_constraintTop_toBottomOf="@id/scroll2">
 
                     <EditText
                         android:id="@+id/ed_fullname"
@@ -460,48 +460,59 @@
                     app:layout_constraintLeft_toRightOf="@id/iv_upload_picture"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioGroup
-                    android:id="@+id/radio1"
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintLeft_toRightOf="@id/iv_upload_picture"
-                    app:layout_constraintStart_toStartOf="@id/experience_tv"
-                    app:layout_constraintTop_toBottomOf="@id/experience_tv">
+                    app:layout_constraintLeft_toLeftOf="@id/experience_tv"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/experience_tv"
+                    android:id="@+id/scroll1">
 
-                    <RadioButton
-                        android:id="@+id/less_than_1"
+                    <RadioGroup
+                        android:id="@+id/radio1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:checked="true"
-                        android:text="@string/less_than_1_years"
-                        android:textSize="@dimen/_10ssp" />
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toRightOf="@id/iv_upload_picture"
+                        app:layout_constraintStart_toStartOf="@id/experience_tv"
+                        app:layout_constraintTop_toBottomOf="@id/experience_tv">
 
-                    <RadioButton
-                        android:id="@+id/one_to_two"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:text="@string/years_1_2"
-                        android:textSize="@dimen/_10ssp" />
+                        <RadioButton
+                            android:id="@+id/less_than_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:checked="true"
+                            android:text="@string/less_than_1_years"
+                            android:textSize="@dimen/_10ssp" />
 
-                    <RadioButton
-                        android:id="@+id/three_to_five"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:text="@string/three_to_five"
-                        android:textSize="@dimen/_10ssp" />
+                        <RadioButton
+                            android:id="@+id/one_to_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:text="@string/years_1_2"
+                            android:textSize="@dimen/_10ssp" />
 
-                    <RadioButton
-                        android:id="@+id/five_plus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:text="@string/five_plus_years"
-                        android:textSize="@dimen/_10ssp" />
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/three_to_five"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:text="@string/three_to_five"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <RadioButton
+                            android:id="@+id/five_plus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:text="@string/five_plus_years"
+                            android:textSize="@dimen/_10ssp" />
+                    </RadioGroup>
+                </HorizontalScrollView>
+
+
 
 
                 <TextView
@@ -513,42 +524,52 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintStart_toStartOf="@id/experience_tv"
-                    app:layout_constraintTop_toBottomOf="@id/radio1" />
+                    app:layout_constraintTop_toBottomOf="@id/scroll1" />
 
-                <RadioGroup
-                    android:id="@+id/radio2"
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:id="@+id/scroll2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="0dp"
-                    app:layout_constraintStart_toStartOf="@id/mode_of_work_tv"
-                    app:layout_constraintTop_toBottomOf="@id/mode_of_work_tv">
+                    app:layout_constraintTop_toBottomOf="@id/mode_of_work_tv"
+                    app:layout_constraintLeft_toLeftOf="@id/mode_of_work_tv"
+                    app:layout_constraintRight_toRightOf="parent">
 
-                    <RadioButton
-                        android:id="@+id/part_time_rb"
+                    <RadioGroup
+                        android:id="@+id/radio2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:checked="true"
-                        android:text="@string/part_time"
-                        android:textSize="@dimen/_10ssp" />
+                        android:orientation="horizontal"
+                        android:padding="0dp">
 
-                    <RadioButton
-                        android:id="@+id/full_time_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:text="@string/full_time"
-                        android:textSize="@dimen/_10ssp" />
+                        <RadioButton
+                            android:id="@+id/part_time_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:checked="true"
+                            android:text="@string/part_time"
+                            android:textSize="@dimen/_10ssp" />
 
-                    <RadioButton
-                        android:id="@+id/remote_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/main_color"
-                        android:text="@string/remote"
-                        android:textSize="@dimen/_10ssp" />
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/full_time_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:text="@string/full_time"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <RadioButton
+                            android:id="@+id/remote_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/main_color"
+                            android:text="@string/remote"
+                            android:textSize="@dimen/_10ssp" />
+                    </RadioGroup>
+
+                </HorizontalScrollView>
+
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,21 +32,13 @@ class VacancyFragment : Fragment() {
     private var selectedSpherePos = 0
     private var selectedTabPos = 0
     private lateinit var vacanciesAdapter: VacanciesAdapter
+    private var isLoaded = false
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentVacancyBinding.inflate(inflater, container, false)
-        makeView()
-        return binding.root
-    }
-
-    private fun makeView() {
-        selectedTabPos = 0
-        selectedSpherePos = 0
         firestore = FirebaseFirestore.getInstance()
+
         sphereAdapter =
             SphereAdapter(requireContext(), object : SphereAdapter.SetOnItemClickListener {
                 override fun setOnItemClick(sphereWithSelected: SphereWithSelected, position: Int) {
@@ -63,14 +55,7 @@ class VacancyFragment : Fragment() {
                     }
                 }
             })
-        binding.recycler.adapter = sphereAdapter // initializing sphere
-        getSpheres()
-        binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-        binding.search.setOnClickListener {
-            binding.search.isIconified = false
-        }
+
         vacanciesAdapter = VacanciesAdapter(requireContext(),
             object : VacanciesAdapter.SetOnItemClickListener {
                 override fun setOnItemClick(vacancy: Vacancy) {
@@ -82,41 +67,76 @@ class VacancyFragment : Fragment() {
                     )
                 }
             })
+
+
+    }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentVacancyBinding.inflate(inflater, container, false)
+
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.search.setOnClickListener {
+            binding.search.isIconified = false
+        }
+
+        if (!isLoaded)
+            makeView()
+
         binding.recyclerSpecialist.adapter = vacanciesAdapter
+
         binding.search.queryHint = resources.getString(R.string.search)
+
+        binding.floatingButton.setOnClickListener {
+            findNavController().navigate(R.id.action_vacancyFragment_to_uploadVacancyFragment)
+        }
+
         specialistViewpagerAdapter = SpecialistViewpagerAdapter(this)
         binding.viewpager.adapter = specialistViewpagerAdapter
+
+        binding.recycler.adapter = sphereAdapter // initializing sphere
+
+
         val list = ArrayList<String>()
         list.add(resources.getString(R.string.for_specialists))
         list.add(resources.getString(R.string.for_students))
-        list.add(resources.getString(R.string.upload_vacancy))
         TabLayoutMediator(
             binding.tabLayout,
             binding.viewpager
         ) { tab: TabLayout.Tab, position: Int ->
-            val itemTabBinding: ItemTabBinding = ItemTabBinding.inflate(layoutInflater)
-            tab.customView = itemTabBinding.root
-            itemTabBinding.text.text = list[position]
-            if (position == 0) {
-                with(itemTabBinding) {
-                    card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
-                    text.setTextColor(resources.getColor(R.color.white))
-                }
-            } else {
-                with(itemTabBinding) {
-                    card.setCardBackgroundColor(resources.getColor(R.color.white))
-                    text.setTextColor(resources.getColor(R.color.tab_color))
+            if (position < 2) {
+                val itemTabBinding: ItemTabBinding = ItemTabBinding.inflate(layoutInflater)
+                tab.customView = itemTabBinding.root
+                itemTabBinding.text.text = list[position]
+                if (position == selectedTabPos) {
+                    with(itemTabBinding) {
+                        card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
+                        text.setTextColor(resources.getColor(R.color.white))
+                    }
+                } else {
+                    with(itemTabBinding) {
+                        card.setCardBackgroundColor(resources.getColor(R.color.white))
+                        text.setTextColor(resources.getColor(R.color.tab_color))
+                    }
                 }
             }
+
         }.attach()
+
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
                 with(itemTabBinding) {
-                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.upload_vacancy)) {
-                        findNavController().navigate(R.id.action_vacancyFragment_to_uploadVacancyFragment)
-                    } else if (itemTabBinding.text.text.toString() == resources.getString(R.string.for_specialists)) {
+//                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.upload_vacancy)) {
+//                        findNavController().navigate(R.id.action_vacancyFragment_to_uploadVacancyFragment)
+//                    } else
+                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.for_specialists)) {
                         selectedTabPos = 0
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
                         text.setTextColor(resources.getColor(R.color.white))
@@ -143,6 +163,15 @@ class VacancyFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+        return binding.root
+    }
+
+    private fun makeView() {
+        selectedTabPos = 0
+        selectedSpherePos = 0
+        getSpheres()
+
     }
 
 
@@ -178,6 +207,7 @@ class VacancyFragment : Fragment() {
     }
 
     private fun getVacancies(sphere: String, parameter: Int) {
+        isLoaded = true
         binding.contentLayout.isClickable = false
         binding.contentLayout.alpha = 0.1f
         binding.progress.visibility = View.VISIBLE

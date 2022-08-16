@@ -1,6 +1,7 @@
 package com.asilmedia.idmasters.fragments.main.specialist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,29 +24,8 @@ import com.masters.idmasters.databinding.ItemTabBinding
 
 class SpecialistFragment : Fragment() {
 
-    private lateinit var binding: FragmentSpecialistBinding
-    private lateinit var firestore: FirebaseFirestore
-    private var list = ArrayList<Sphere>()
-    private var listCanditates = ArrayList<Resume>()
-    private var listSphereWithSelected = ArrayList<SphereWithSelected>()
-    private lateinit var sphereAdapter: SphereAdapter
-    private lateinit var specialistViewpagerAdapter: SpecialistViewpagerAdapter
-    private var selectedSpherePos = 0
-    private var selectedTabPos = 0
-    private lateinit var specialistsAdapter: SpecialistsAdapter
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentSpecialistBinding.inflate(inflater, container, false)
-        makeView()
-        return binding.root
-    }
-
-    private fun makeView() {
-        firestore = FirebaseFirestore.getInstance()
-        selectedTabPos = 0
-        selectedSpherePos = 0
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         sphereAdapter =
             SphereAdapter(requireContext(), object : SphereAdapter.SetOnItemClickListener {
                 override fun setOnItemClick(sphereWithSelected: SphereWithSelected, position: Int) {
@@ -62,14 +42,8 @@ class SpecialistFragment : Fragment() {
                     }
                 }
             })
-        binding.recycler.adapter = sphereAdapter // initializing sphere
-        getSpheres()
-        binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-        binding.search.setOnClickListener {
-            binding.search.isIconified = false
-        }
+
+
         specialistsAdapter = SpecialistsAdapter(requireContext(),
             object : SpecialistsAdapter.SetOnItemClickListener {
                 override fun setOnItemClick(resume: Resume) {
@@ -81,41 +55,90 @@ class SpecialistFragment : Fragment() {
                     )
                 }
             })
+    }
+
+    private lateinit var binding: FragmentSpecialistBinding
+    private lateinit var firestore: FirebaseFirestore
+    private var list = ArrayList<Sphere>()
+    private var listCanditates = ArrayList<Resume>()
+    private var listSphereWithSelected = ArrayList<SphereWithSelected>()
+    private lateinit var sphereAdapter: SphereAdapter
+    private lateinit var specialistViewpagerAdapter: SpecialistViewpagerAdapter
+    private var selectedSpherePos = 0
+    private var selectedTabPos = 0
+    private lateinit var specialistsAdapter: SpecialistsAdapter
+    private var isLoaded = false
+    private val TAG = "SpecialistFragment"
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSpecialistBinding.inflate(inflater, container, false)
+
+        binding.recycler.adapter = sphereAdapter // initializing sphere
+
         binding.recyclerSpecialist.adapter = specialistsAdapter
-        binding.search.queryHint = resources.getString(R.string.search)
+
         specialistViewpagerAdapter = SpecialistViewpagerAdapter(this)
         binding.viewpager.adapter = specialistViewpagerAdapter
+
+        if (!isLoaded)
+            makeView()
+
+        binding.floatingButton.setOnClickListener {
+            findNavController().navigate(R.id.action_specialistFragment_to_uploadResumeFragment)
+        }
+
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.search.setOnClickListener {
+            binding.search.isIconified = false
+        }
+
+        binding.search.queryHint = resources.getString(R.string.search)
+
+
         val list = ArrayList<String>()
         list.add(resources.getString(R.string.specialists))
         list.add(resources.getString(R.string.students))
-        list.add(resources.getString(R.string.upload_resume))
+//        list.add(resources.getString(R.string.upload_resume))
+
         TabLayoutMediator(
             binding.tabLayout,
             binding.viewpager
         ) { tab: TabLayout.Tab, position: Int ->
-            val itemTabBinding: ItemTabBinding = ItemTabBinding.inflate(layoutInflater)
-            tab.customView = itemTabBinding.root
-            itemTabBinding.text.text = list[position]
-            if (position == 0) {
-                with(itemTabBinding) {
-                    card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
-                    text.setTextColor(resources.getColor(R.color.white))
-                }
-            } else {
-                with(itemTabBinding) {
-                    card.setCardBackgroundColor(resources.getColor(R.color.white))
-                    text.setTextColor(resources.getColor(R.color.tab_color))
+            if (position < 2) {
+                val itemTabBinding: ItemTabBinding = ItemTabBinding.inflate(layoutInflater)
+                tab.customView = itemTabBinding.root
+                itemTabBinding.text.text = list[position]
+                if (selectedTabPos == position) {
+                    with(itemTabBinding) {
+                        card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
+                        text.setTextColor(resources.getColor(R.color.white))
+                    }
+                } else {
+                    with(itemTabBinding) {
+                        card.setCardBackgroundColor(resources.getColor(R.color.white))
+                        text.setTextColor(resources.getColor(R.color.tab_color))
+                    }
                 }
             }
+
         }.attach()
+
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val itemTabBinding = ItemTabBinding.bind(tab.customView!!)
                 with(itemTabBinding) {
-                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.upload_resume)) {
-                        findNavController().navigate(R.id.action_specialistFragment_to_uploadResumeFragment)
-                    } else if (itemTabBinding.text.text.toString() == resources.getString(R.string.specialists)) {
+//                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.upload_resume)) {
+////                        findNavController().navigate(R.id.action_specialistFragment_to_uploadResumeFragment)
+//                    } else
+                    if (itemTabBinding.text.text.toString() == resources.getString(R.string.specialists)) {
                         selectedTabPos = 0
                         card.setCardBackgroundColor(resources.getColor(R.color.tab_color))
                         text.setTextColor(resources.getColor(R.color.white))
@@ -143,6 +166,15 @@ class SpecialistFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
+        return binding.root
+    }
+
+    private fun makeView() {
+        firestore = FirebaseFirestore.getInstance()
+        selectedTabPos = 0
+        selectedSpherePos = 0
+
+        getSpheres()
     }
 
     private fun getSpheres() {
@@ -173,6 +205,7 @@ class SpecialistFragment : Fragment() {
     }
 
     private fun getCanditates(sphere: String, parameter: Int) {
+        isLoaded = true
         binding.contentLayout.isClickable = false
         binding.contentLayout.alpha = 0.1f
         binding.progress.visibility = View.VISIBLE

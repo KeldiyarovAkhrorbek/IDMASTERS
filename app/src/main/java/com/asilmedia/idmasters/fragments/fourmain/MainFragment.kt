@@ -1,6 +1,7 @@
 package com.asilmedia.idmasters.fragments.fourmain
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,15 +22,47 @@ class MainFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var menuAdapter: MenuAdapter
     private lateinit var firestore: FirebaseFirestore
-    private var user = User()
+    private var isLoaded = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
+        menuAdapter = MenuAdapter(object : MenuAdapter.SetOnItemClickListener {
+            override fun setOnItemClick(menu: Menu) {
+                if (menu.key == "news") {
+                    findNavController().navigate(R.id.action_mainFragment_to_newsFragment)
+                } else if (menu.key == "specialists") {
+                    findNavController().navigate(R.id.action_mainFragment_to_specialistFragment)
+                } else if (menu.key == "vacancies") {
+                    findNavController().navigate(R.id.action_mainFragment_to_vacancyFragment)
+                } else {
+                    findNavController().navigate(R.id.action_nav_home_to_videoFragment2)
+                }
+            }
+        })
+    }
+
+    private val TAG = "MainFragment"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        auth = FirebaseAuth.getInstance()
-        firestore = FirebaseFirestore.getInstance()
-        getUser()
+        binding.rv.adapter = menuAdapter
+        if (!isLoaded) {
+            getUser()
+            initialize()
+        }
+
+
+        return binding.root
+    }
+
+    private fun initialize() {
         var list = ArrayList<Menu>()
         list.add(
             Menu(
@@ -67,22 +100,8 @@ class MainFragment : Fragment() {
             )
         )
 
-        menuAdapter = MenuAdapter(object : MenuAdapter.SetOnItemClickListener {
-            override fun setOnItemClick(menu: Menu) {
-                if (menu.key == "news") {
-                    findNavController().navigate(R.id.action_mainFragment_to_newsFragment)
-                } else if (menu.key == "specialists") {
-                    findNavController().navigate(R.id.action_mainFragment_to_specialistFragment)
-                } else if (menu.key == "vacancies") {
-                    findNavController().navigate(R.id.action_mainFragment_to_vacancyFragment)
-                } else {
-                    findNavController().navigate(R.id.action_nav_home_to_videoFragment2)
-                }
-            }
-        })
+
         menuAdapter.submitList(list)
-        binding.rv.adapter = menuAdapter
-        return binding.root
     }
 
     private fun getUser() {
