@@ -33,7 +33,11 @@
             app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_nav_home_to_videoFragment2"
-            app:destination="@id/videoFragment" />
+            app:destination="@id/videoFragment"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/nav_star"
